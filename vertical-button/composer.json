@@ -1,0 +1,19 @@
+{
+    "name": "riyadh1734/virtical-button",
+    "description": "Show a coupon button in the frontend",
+    "type": "wordpress-plugin",
+    "license": "GPLv2",
+    "autoload": {
+        "psr-4": {
+            "Riyadh1734\\VirticalButton\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Riyadh Ahmed",
+            "email": "riathislam44@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}

@@ -1,0 +1,23 @@
+.vertical-butt {
+    position:fixed;
+    top: 50%;
+    right: -50px;
+    transform: rotate(-90deg);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    border: 1px solid #aaa;
+    padding: 5px 15px;
+    border-radius: 5px;
+}
+.vertical-butt a {
+    margin-right: 10px;
+}
+.coupon-text {
+    font-size: 18px;
+    margin: 10px;
+    color: #aaa;
+}
+.img-size {
+    transform: rotate(90deg);
+}

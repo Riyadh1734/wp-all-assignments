@@ -1,0 +1,19 @@
+{
+    "name": "riyadh1734/posts-email-notification-plus",
+    "description": "\u001b[A\u001b[A\u001b[B\u001b[B\u001b[D\u001b[C\u001b[A\u001b[B\u001b[D When a new post is published multiple user get a notification by email",
+    "type": "wordpress-plugin",
+    "license": "GPLv2",
+    "autoload": {
+        "psr-4": {
+            "Riyadh1734\\PostsEmailNotificationPlus\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Riyadh Ahmed",
+            "email": "riathislam44@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}

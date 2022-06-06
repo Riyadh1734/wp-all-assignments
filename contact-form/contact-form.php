@@ -31,6 +31,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
+
 require_once __DIR__ . '/vendor/autoload.php';
 
 /**
@@ -81,19 +82,19 @@ final class SCF_Shortcode {
         <form action="" id="self_contact" method="post">
             <p>
                 <label for="fname">First Name</label>
-                <input type="text" name="self_fname" value="">
+                <input id="fname" type="text" name="self_fname" value="">
                 <label for="lname">Last Name</label>
-                <input type="text" name="self_lname" value="">
+                <input id="lname" type="text" name="self_lname" value="">
             </p>
 
             <p>
                 <label for="email">Email</label>
-                <input type="email" name="self_email" value="">
+                <input id="email" type="email" name="self_email" value="">
             </p>
 
             <p>
                 <label for="subject">Subject</label>
-                <input type="text" name="self_subject" value="">
+                <input id="subject" type="text" name="self_subject" value="">
             </p>
 
             <p>
@@ -103,9 +104,6 @@ final class SCF_Shortcode {
 
             <p>
                 <?php wp_nonce_field( 'self_contact_form_action', 'self_contact_form_nonce' ); ?>
-            </p>
-
-            <p>
                 <input type="submit" name="self_submit" value="<?php echo esc_attr( $atts['submit'])?>">
             </p>
         </form>
@@ -120,9 +118,9 @@ final class SCF_Shortcode {
 
     public function email_handler( $post ) {
 
-        $first_name = ! empty( $_POST['self_fname'] ) ? sanitize_text_field( wp_unslash( $_POST['self_fname'] ) ) : '';
-        $last_name = ! empty( $_POST['self_lname'] ) ? sanitize_text_field( wp_unslash( $_POST['self_lname'] ) ) : '';
-        $email_id = ! empty( $_POST['self_email'] ) ? sanitize_email( wp_unslash( $_POST['self_email'] ) ) : '';
+        $first_name      = ! empty( $_POST['self_fname'] ) ? sanitize_text_field( wp_unslash( $_POST['self_fname'] ) ) : '';
+        $last_name       = ! empty( $_POST['self_lname'] ) ? sanitize_text_field( wp_unslash( $_POST['self_lname'] ) ) : '';
+        $email_id        = ! empty( $_POST['self_email'] ) ? sanitize_email( wp_unslash( $_POST['self_email'] ) ) : '';
         $subject_content = ! empty( $_POST['self_subject'] ) ? sanitize_text_field( wp_unslash( $_POST['self_subject'] ) ) : '';
         $message_content = ! empty( $_POST['self_message'] ) ? sanitize_textarea_field( wp_unslash( $_POST['self_message'] ) ) : '';
 

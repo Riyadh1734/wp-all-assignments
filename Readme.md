@@ -11,4 +11,4 @@ WordPress Plugin Development all assignments by weDevs
 
 * seo-meta
 
-*posts-title-capitalize
+* posts-title-capitalize

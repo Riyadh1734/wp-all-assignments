@@ -1,0 +1,18 @@
+{
+    "name": "riyadh1734/post-excerpt",
+    "type": "wordpress-plugin",
+    "license": "GPLv2",
+    "autoload": {
+        "psr-4": {
+            "Riyadh1734\\PostExcerpt\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Riyadh Ahmed",
+            "email": "riathislam44@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}

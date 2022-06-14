@@ -1,0 +1,19 @@
+{
+    "name": "riyadh1734/posts-view-plus",
+    "description": "Using a shortcode which will display 10 latest post title with view count",
+    "type": "wordpress-plugin",
+    "license": "GPLv2",
+    "autoload": {
+        "psr-4": {
+            "Riyadh1734\\PostsViewPlus\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Riyadh Ahmed",
+            "email": "riathislam44@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}

@@ -1,14 +1,20 @@
 # wp-all-assignments
 WordPress Plugin Development all assignments by weDevs
 
-* posts-view
+* posts-view -> 01
 
-* posts-email-notification
+* posts-email-notification -> 02
 
-* posts-email-notification-plus
+* posts-email-notification-plus -> 03
 
-* vertical-button
+* vertical-button -> 04
 
-* seo-meta
+* seo-meta -> 05
 
-* posts-title-capitalize
+* posts-title-capitalize -> 06
+
+*contact-form -> 07
+
+* post-excerpt -> 08
+
+* posts-view-plus -> 09

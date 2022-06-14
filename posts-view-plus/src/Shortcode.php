@@ -8,7 +8,6 @@ class Shortcode{
      * Initialize the class
      */
     public function __construct() {
-
         add_shortcode( 'ra_post_view_extend', [ $this, 'render_ct_post_list' ] );
     }
 
@@ -20,7 +19,6 @@ class Shortcode{
      * @return void
      */
     public function render_ct_post_list( $atts ) {
-
         $atts = shortcode_atts( array(
             'limit'  => '10',
             'category' => '',

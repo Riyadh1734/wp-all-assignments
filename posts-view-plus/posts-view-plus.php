@@ -37,86 +37,80 @@ require_once __DIR__ . '/vendor/autoload.php';
  */
 final class Posts_View_Plus {
 
-	/**
-	 * Plugin version
-	 * 
-	 * @var string
-	 */
-	const version = '1.0';
+    /**
+     * Plugin version
+     * 
+     * @var string
+     */
+    const version = '1.0';
 
-	/**
-	 * Class contruct
-	 */	
-	private function __construct() {
+    /**
+     * Class contruct
+     */	
+    private function __construct() {
+        $this-> define_constants();
 
-		$this-> define_constants();
+        register_activation_hook( __FILE__, [ $this, 'activate' ] );
 
-		register_activation_hook( __FILE__, [ $this, 'activate' ] );
-
-		$this->init_plugin();
-		
-	}
-	
+        $this->init_plugin();
+        
+    }
+    
 
     /**
      * Initialize singleton instance
      * 
      * @return \Posts_view_plus
      */
-	public static function init() {
+    public static function init() {
+        static $instance = false;
 
-		static $instance = false;
+        if ( ! $instance ) {
+            $instance = new self();
+        }
+        return $instance;
+    }
 
-		if ( ! $instance ) {
-			$instance = new self();
-		}
-		return $instance;
-	}
+    /**
+     * Define the main plugin constants
+     * 
+     * @return void
+     * 
+     */
+    public function define_constants() {
+        define('CURRENT_POSTS_VIEW_PLUS_VERSION', self::version ); 
+        define('CURRENT_POSTS_VIEW_PLUS_FILE', __FILE__ );
+        define('CURRENT_POSTS_VIEW_PLUS_PATH', __DIR__ );
+        define('CURRENT_POSTS_VIEW_PLUS_URL', plugins_url( '', CURRENT_POSTS_VIEW_PLUS_FILE ) );
+    }
 
-	/**
-	 * Define the main plugin constants
-	 * 
-	 * @return void
-	 * 
-	 */
-	public function define_constants() {
+    /**
+     * Initialize the plugin
+     * 
+     * @return void
+     */
+    public function init_plugin() {
+        new Riyadh1734\PostsViewPlus\Shortcode();
+        new Riyadh1734\PostsViewPlus\Settings();
 
-		define('CURRENT_POSTS_VIEW_PLUS_VERSION', self::version ); 
-		define('CURRENT_POSTS_VIEW_PLUS_FILE', __FILE__ );
-		define('CURRENT_POSTS_VIEW_PLUS_PATH', __DIR__ );
-		define('CURRENT_POSTS_VIEW_PLUS_URL', plugins_url( '', CURRENT_POSTS_VIEW_PLUS_FILE ) );
-	}
+    }
 
-	/**
-	 * Initialize the plugin
-	 * 
-	 * @return void
-	 */
-	public function init_plugin() {
-		
-		new Riyadh1734\PostsViewPlus\Shortcode();
-		new Riyadh1734\PostsViewPlus\Settings();
-		require_once( CURRENT_POSTS_VIEW_PLUS_PATH . '/src/Settings.php' );
-        require_once( CURRENT_POSTS_VIEW_PLUS_PATH . '/src/Shortcode.php' );
-	}
+    /**
+     * Do staff plugin activation
+     * 
+     * @return void
+     * 
+     */
+    public function activate() {
+        $installed = get_option( 'current_posts_view_plus_installed');
 
-	/**
-	 * Do staff plugin activation
-	 * 
-	 * @return void
-	 * 
-	 */
-	public function activate() {
+        if ( ! $installed ) {
+            
+            update_option( 'current_posts_view_plus_installed', time() );
+        }
 
-		$installed = get_option( 'current_posts_view_plus_installed');
-
-		if ( ! $installed ) {
-			
-			update_option( 'current_posts_view_plus_installed', time() );
-		}
-
-		update_option( 'current_posts_view_plus_version', CURRENT_POSTS_VIEW_PLUS_VERSION );
-	}
+        update_option( 'current_posts_view_plus_version', CURRENT_POSTS_VIEW_PLUS_VERSION );
+    }
 }
 
 /**
@@ -125,8 +119,7 @@ final class Posts_View_Plus {
  * @return \Posts_view_plus
  */
 function posts_view_plus() {
-
-	return posts_view_plus::init();
+    return posts_view_plus::init();
 }
 
 //kick of the plugin

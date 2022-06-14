@@ -13,7 +13,7 @@ WordPress Plugin Development all assignments by weDevs
 
 * posts-title-capitalize -> 06
 
-*contact-form -> 07
+* contact-form -> 07
 
 * post-excerpt -> 08
 

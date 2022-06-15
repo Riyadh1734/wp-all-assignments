@@ -23,13 +23,12 @@ class Shortcode{
             'limit'  => '10',
             'category' => '',
             'id'       => '',
-            'order'    => 'ASC',
+            'order'    => 'DESC',
         ), $atts );
         
         $args = array(
             'post_type'      => 'post',
             'posts_per_page' => $atts['limit'],
-            'meta_key'       => 'post_view_count',
             'order'          => $atts['order']
         );
 
@@ -54,7 +53,7 @@ class Shortcode{
 
                 foreach( $posts as $post) {
                     $post_views_count = get_post_meta( $post->ID, 'post_view_count', true );
-                    $post_views_text  = sprintf( __( '%s : %d Views', 'text-domain' ), $post->post_title, $post_views_count );
+                    $post_views_text  = sprintf( __( '%s : %d Views', 'post-view-plus' ), $post->post_title, $post_views_count );
 
                     ?>
                     <li><?php echo $post_views_text; ?></li>

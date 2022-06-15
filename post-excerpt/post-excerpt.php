@@ -7,12 +7,10 @@
  * Author URI: http://sajuahmed.epizy.com
  * Version: 1.0
  * License: GPL2
- * Text Domain: text-domain
- * Domain Path: domain/path
  */
 
 /*
-    Copyright (C) Year  Author  Email
+    Copyright (C)2022 Riyadh Ahmed  riathislam44@gmail.com
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License, version 2, as
@@ -40,76 +38,73 @@ require_once __DIR__ . '/vendor/autoload.php';
  */
 final class ra_post_excerpt {
 
-	/**
-	 * plugin version
-	 */
-	const version = '1.0';
+    /**
+     * plugin version
+     */
+    const version = '1.0';
 
-	/**
-	 * class constructor
-	 */
-	private function __construct() {
-		$this->define_constants();
+    /**
+     * class constructor
+     */
+    private function __construct() {
+        $this->define_constants();
 
-		register_activation_hook( __FILE__, [ $this, 'activate'] );
+        register_activation_hook( __FILE__, [ $this, 'activate'] );
 
-		add_action( 'plugins_loaded', [ $this, 'init_plugin' ] );
-	}
+        add_action( 'plugins_loaded', [ $this, 'init_plugin' ] );
+    }
 
-	/**
-	 * Initialize a singleton instance
-	 * 
-	 * @return \RA_POST_EXCERPT
-	 */
-	public static function init() {
+    /**
+     * Initialize a singleton instance
+     * 
+     * @return \RA_POST_EXCERPT
+     */
+    public static function init() {
+        static $instance = false;
 
-		static $instance = false;
+        if (! $instance ) {
+          $instance = new self();
+        }
 
-		if (! $instance ) {
-		  $instance = new self();
-		}
-
-		return $instance;
-	}
+        return $instance;
+    }
 
     /**
      * Define the required plugin constants
      */
-	public function define_constants() {
+    public function define_constants() {
+        define( 'RA_POST_EXCERPT_VERSION', self::version);
+        define( 'RA_POST_EXCERPT_FILE', __FILE__ );
+        define( 'RA_POST_EXCERPT_PATH', __DIR__ );
+        define('RA_POST_EXCERPT_URL', plugins_url( '', RA_POST_EXCERPT_FILE ) );
+    }
 
-		define( 'RA_POST_EXCERPT_VERSION', self::version);
-		define( 'RA_POST_EXCERPT_FILE', __FILE__ );
-		define( 'RA_POST_EXCERPT_PATH', __DIR__ );
-		define('RA_POST_EXCERPT_URL', plugins_url( '', RA_POST_EXCERPT_FILE ) );
-	}
+    /**
+     * initialize plugin
+     */
+    public function init_plugin() {
+        if (is_admin() ) {
+            new Riyadh1734\PostExcerpt\Metabox();
+        } else {
+            new Riyadh1734\PostExcerpt\Shortcode();
+        }
 
-	/**
-	 * initialize plugin
-	 */
-	public function init_plugin() {
+     }
 
-		if (is_admin() ) {
-			new Riyadh1734\PostExcerpt\Metabox();
-		} else {
-			new Riyadh1734\PostExcerpt\Shortcode();
-		}
+    /**
+     * Do stuff plugin activation
+     * 
+     * @return void
+     */
+    public function activate() {
+      $installed = get_option( 'ra_post_excerpt_installed' );
 
-	 }
-
-	/**
-	 * Do stuff plugin activation
-	 * 
-	 * @return void
-	 */
-	public function activate() {
-	  $installed = get_option( 'ra_post_excerpt_installed' );
-
-	  if (! $installed ) {
-	  	update_option( 'ra_post_excerpt_installed', time() );
-	  }
-	  
-	  update_option( 'ra_post_excerpt_version', RA_POST_EXCERPT_VERSION );
-	}
+      if (! $installed ) {
+          update_option( 'ra_post_excerpt_installed', time() );
+      }
+      
+      update_option( 'ra_post_excerpt_version', RA_POST_EXCERPT_VERSION );
+    }
 
 }
 
@@ -120,7 +115,7 @@ final class ra_post_excerpt {
  */
 function ra_post_excerpt()
 {
-	return ra_post_excerpt::init();
+    return ra_post_excerpt::init();
 }
 //kick-off the plugin
 ra_post_excerpt();

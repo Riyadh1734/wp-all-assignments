@@ -1,7 +1,5 @@
 <?php
-
 namespace Riyadh1734\PostExcerpt;
-
 /**
  * metabox handler class
  * @version 1.0
@@ -14,8 +12,6 @@ class Metabox {
      * 
      */
     public function __construct() {
-        
-
         add_action('add_meta_boxes', [$this, 'ct_metabox_handler']);
         add_action('save_post',      [ $this, 'ct_metabox_save_postdata']);
 
@@ -27,7 +23,6 @@ class Metabox {
      * @return void
      */
     public function ct_metabox_handler() {
-
         add_meta_box(
             'ct-meta-box',
             __( 'Custom Excerpt' ),
@@ -41,10 +36,10 @@ class Metabox {
      * Save metadata function
      *
      * @param [string] $post_id
+     * 
      * @return void
      */
     public function ct_metabox_save_postdata( $post_id ) {
-
         // Check if our nonce is set.
         if ( ! isset( $_POST['ct_inner_custom_box_nonce'] ) ) {
             return $post_id;
@@ -73,8 +68,6 @@ class Metabox {
  
         // Update the meta field.
         update_post_meta( $post_id, '_ct_meta_value_key', $userdata );
-
-        
     }
 
     /**
@@ -83,7 +76,6 @@ class Metabox {
      * @return void
      */
     public function render_ct_meta_box( $post ) {
-
             // Add an nonce field so we can check for it later.
             wp_nonce_field( 'ct_inner_custom_box', 'ct_inner_custom_box_nonce' );
 

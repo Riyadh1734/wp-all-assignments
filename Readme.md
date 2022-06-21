@@ -1,5 +1,5 @@
 # wp-all-assignments
-WordPress Plugin Development all assignments by weDevs
+<strong>WordPress Plugin Development all assignments by weDevs</strong>
 
 * posts-view -> 01
 

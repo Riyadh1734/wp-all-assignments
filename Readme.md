@@ -18,3 +18,6 @@
 * post-excerpt -> 08
 
 * posts-view-plus -> 09
+
+* books-review -> 10
+

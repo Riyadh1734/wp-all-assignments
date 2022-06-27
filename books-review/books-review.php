@@ -105,6 +105,7 @@ final class Ra_Books_Review {
            new Riyadh1734\BooksReview\Metabox();
         }
         new Riyadh1734\BooksReview\Customptype();
+        new \Riyadh1734\BooksReview\Customtax();
     }
 
     /**

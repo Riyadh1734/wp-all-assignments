@@ -8,7 +8,7 @@
  * Author URI: http://sajuahmed.epizy.com
  * Version: 1.0
  * License: GPL2
- * Text Domain: 
+ * Text Domain: Ra_Books_Review
  */
 
 /*
@@ -105,7 +105,8 @@ final class Ra_Books_Review {
            new Riyadh1734\BooksReview\Metabox();
         }
         new Riyadh1734\BooksReview\Customptype();
-        new \Riyadh1734\BooksReview\Customtax();
+        new Riyadh1734\BooksReview\Customtax();
+        new \Riyadh1734\BooksReview\Shortcode();
     }
 
     /**

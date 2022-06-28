@@ -3,6 +3,11 @@ namespace Riyadh1734\BooksReview;
 
 class Customtax {
 
+    /**
+     * Initialize the class
+     * 
+     * @since 1.1
+     */
     public function __construct() {
         add_action( 'init',[ $this, 'book_register_taxo' ] );
     }

@@ -1,6 +1,7 @@
 <?php
 /**
  * templates for all single posts
+ * @since 1.0
  */
 
 get_header();

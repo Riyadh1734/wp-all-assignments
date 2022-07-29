@@ -91,6 +91,7 @@ final class Ra_Books_Review {
         define( 'Ra_Books_Review_FILE', __FILE__ );
         define( 'Ra_Books_Review_PATH', __DIR__ );
         define( 'Ra_Books_Review_URL', plugins_url( '', Ra_Books_Review_FILE ) );
+        define( 'Ra_Books_Review_ASSETS', Ra_Books_Review_URL . '/assets');
     }
 
     /**
@@ -99,6 +100,12 @@ final class Ra_Books_Review {
      * @since  1.0
      */
     public function init_plugin() {
+        include_once 'src/functions.php';
+        
+        if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+            new \Riyadh1734\BooksReview\Ajax();
+        }
+
         if ( is_admin() ) {
            new Riyadh1734\BooksReview\Menu();
            
@@ -107,6 +114,7 @@ final class Ra_Books_Review {
         new Riyadh1734\BooksReview\Customptype();
         new Riyadh1734\BooksReview\Customtax();
         new \Riyadh1734\BooksReview\Shortcode();
+        new \Riyadh1734\BooksReview\Assets();
     }
 
     /**
@@ -117,12 +125,8 @@ final class Ra_Books_Review {
      * @return void
      */
     public function activate() {
-      $installed = get_option( 'ra_books_review_installed' );
-
-      if (! $installed ) {
-          update_option( 'ra_books_review_installed', time() );
-      }
-      update_option( 'ra_books_review_version', Ra_Books_Review_VERSION );
+        $installer = new Riyadh1734\BooksReview\install\Installer();
+        $installer->run();
     }
 }
 

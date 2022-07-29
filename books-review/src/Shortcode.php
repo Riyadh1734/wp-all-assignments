@@ -91,7 +91,7 @@ class Shortcode {
             }
         }
         else {
-            echo __( 'No book found for your search!', 'Ra_Books_Review' );
+            echo __('<span style="color: red; font-size: 18px;"> '."=> No book found for your search!".' </span>' , 'Ra_Books_Review' );
         }
         //Restore all original data
         wp_reset_postdata();

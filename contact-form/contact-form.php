@@ -10,7 +10,7 @@
  */
 
 /*
-    Copyright (C) Year  Author  Email
+    Copyright (C) 2022  Riyadh-Ahmed  riathislam44@gmail.com
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License, version 2, as
@@ -30,19 +30,19 @@
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
-
 /**
- * Include the autoloader
+ * Include the composer autoloader
  */
 if ( ! file_exists( __DIR__ . "/vendor/autoload.php" ) ) {
-    wp_die( 'Composer auto-loader missing. Run "composer update" command on this plugin.' );
+    wp_die( 'Composer auto-loader missing. Run "composer update" command.' );
 }
+
 require_once __DIR__ . '/vendor/autoload.php';
 
 /**
  * The main plugin class
  */
-final class SCF_Shortcode {
+final class Ra_Contact_Form {
 
     /**
      * Plugin version
@@ -67,116 +67,24 @@ final class SCF_Shortcode {
      * @return void
      */
     public function init_plugin() {
-        add_shortcode('self_form', [ $this, 'self_contact_form' ] );
-    }
-
-    function self_contact_form( $atts ) {
-        //var_dump($_POST);
+        include_once 'includes/functions.php';
         
-        $atts = shortcode_atts( [
-            'email'  => get_option( 'admin_email' ),
-            'submit' => __( 'Send', 'self' )
-        ], $atts );
+        if ( is_admin() ) {
+            new Riyadh1734\ContactForm\Admin\Menu();
+        } else {
+            new Riyadh1734\ContactForm\Shortcode();
+        }
 
-        $email_sent = $this->email_handler( $_POST );
+        if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+            new Riyadh1734\ContactForm\Ajax();
+        }
 
-        ob_start();
-        
-        ?>
-
-        <form action="" id="self_contact" method="post">
-            <p>
-                <label for="fname">First Name</label>
-                <input id="fname" type="text" name="self_fname" value="">
-                <label for="lname">Last Name</label>
-                <input id="lname" type="text" name="self_lname" value="">
-            </p>
-
-            <p>
-                <label for="email">Email</label>
-                <input id="email" type="email" name="self_email" value="">
-            </p>
-
-            <p>
-                <label for="subject">Subject</label>
-                <input id="subject" type="text" name="self_subject" value="">
-            </p>
-
-            <p>
-                <label for="message">Message</label>
-                <textarea name="self_message" id="message" rows= "4" cols="50"></textarea>
-            </p>
-
-            <p>
-                <?php wp_nonce_field( 'self_contact_form_action', 'self_contact_form_nonce' ); ?>
-                <input type="submit" name="self_submit" value="<?php echo esc_attr( $atts['submit'])?>">
-            </p>
-        </form>
-
-        <?php if ( $email_sent ) : ?>
-            <h1><?php _e( 'Email sent succesfully', 'self') ?></h1>
-        <?php endif; ?>
-
-        <?php
-        return ob_get_clean();
+        new Riyadh1734\ContactForm\Assets();
     }
-
-    public function email_handler( $post ) {
-
-        $first_name      = ! empty( $_POST['self_fname'] ) ? sanitize_text_field( wp_unslash( $_POST['self_fname'] ) ) : '';
-        $last_name       = ! empty( $_POST['self_lname'] ) ? sanitize_text_field( wp_unslash( $_POST['self_lname'] ) ) : '';
-        $email_id        = ! empty( $_POST['self_email'] ) ? sanitize_email( wp_unslash( $_POST['self_email'] ) ) : '';
-        $subject_content = ! empty( $_POST['self_subject'] ) ? sanitize_text_field( wp_unslash( $_POST['self_subject'] ) ) : '';
-        $message_content = ! empty( $_POST['self_message'] ) ? sanitize_textarea_field( wp_unslash( $_POST['self_message'] ) ) : '';
-
-        if ( ! isset( $post['self_submit']) ) {
-            return;
-        }
-
-        if ( ! isset( $post['self_contact_form_nonce']) || ! wp_verify_nonce( $post['self_contact_form_nonce'], 'self_contact_form_action' ) ) {
-            esc_html_e( 'Nonce verification failed!', 'self' );
-            return;
-        }
-
-        if ( empty( $first_name ) ) {
-            esc_html_e( 'First name can not be empty!', 'self' );
-            return;
-        }
-
-        if ( empty( $last_name) ) {
-            esc_html_e( 'Last name can not be empty!', 'self' );
-            return;
-        }
-
-        if ( empty( $email_id ) ) {
-            esc_html_e( 'Email id can not be empty!', 'self' );
-            return;
-        }
-
-        if ( empty( $subject_content ) ) {
-            esc_html_e( 'Subject can not be empty!', 'self' );
-            return;
-        }
-
-        if ( empty( $message_content ) ) {
-            esc_html_e( ' Message field can not be empty!', 'self' );
-            return;
-        }
-
-
-        $subject = "Contact message from {$_POST['self_fname']} {$_POST['self_lname']}";
-        $email   = $_POST['self_email'];
-        $message = $_POST['self_message'];
-
-        $submit = wp_mail( $email, $subject, $message );
-
-        return $submit;
-    }
-  
     /**
      * Initializes a singleton instance
      *
-     * @return \SCF_Shortcode
+     * @return \Ra_Contact_Form
      */
     public static function init() {
         static $instance = false;
@@ -193,10 +101,11 @@ final class SCF_Shortcode {
      * @return void
      */
     public function define_constants() {
-        define( 'SCF_SHORTCODE_VERSION', self::version );
-        define( 'SCF_SHORTCODE_FILE', __FILE__ );
-        define( 'SCF_SHORTCODE_PATH', __DIR__ );
-        define( 'SCF_SHORTCODE_URL', plugins_url( '', SCF_SHORTCODE_FILE ) );
+        define( 'Ra_Contact_Form_VERSION', self::version );
+        define( 'Ra_Contact_Form_FILE', __FILE__ );
+        define( 'Ra_Contact_Form_PATH', __DIR__ );
+        define( 'Ra_Contact_Form_URL', plugins_url( '', Ra_Contact_Form_FILE ) );
+        define( 'Ra_Contact_Form_ASSETS', Ra_Contact_Form_URL . '/assets' );
     }
 
    /**
@@ -205,23 +114,19 @@ final class SCF_Shortcode {
      * @return void
      */
     public function activate() {
-        $installed = get_option( 'scf_shortcode_installed' );
-
-        if ( ! $installed ) {
-            update_option( 'scf_shortcode_installed', time() );
-        }
-        update_option( 'scf_shortcode_version', SCF_SHORTCODE_VERSION );
+        $installer = new \Riyadh1734\ContactForm\Install\Installer();
+        $installer->run();
     }
 }
 
 /**
  * Initializes the main plugin
  *
- * @return \SCF_Shortcode
+ * @return \Ra_Contact_Form
  */
-function scf_shortcode() {
-    return SCF_Shortcode::init();
+function Ra_Contact_Form() {
+    return Ra_Contact_Form::init();
 }
 
 // kick-off the plugin
-scf_shortcode();
+Ra_Contact_Form();

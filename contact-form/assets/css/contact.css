@@ -1,0 +1,63 @@
+/* Contact Form Styles */
+
+.contact-form-wrapper {
+    display: block;
+    width: 100%;
+    margin: 0 auto 30px;
+}
+
+.contact-form-wrapper .cf-title {
+    margin: 0 auto 20px;
+}
+
+.contact-form-wrapper .cf-desc {
+    margin: 0 auto 20px;
+}
+input#cf-submit {
+    background-color: #7b9997ee;
+}
+
+#self_contact {
+    width: 100%;
+}
+
+#self_contact input {
+    width: 25%;
+    margin-bottom: 5px;
+}
+
+#self_contact .cf-title {
+    margin: 0 auto 50px;
+}
+
+#self_contact .cf-desc {
+    margin: 0 auto 50px;
+}
+
+#self_contact .input-field-single {
+    min-height: 120px;
+}
+
+#self_contact .msg-error {
+    font-size: 16px;
+    line-height: 1;
+    font-weight: 700;
+    color: #ff0000;
+}
+
+#self_contact .submision-status  {
+    display: block;
+    margin: 0 auto 5px;
+    padding: 10px 15px;
+}
+#self_contact .status-success {
+    color: #0A9529;
+    background: #C4FAD0;
+    border: 1px solid #02AD28;
+}
+
+#self_contact .status-error {
+    color: #ff0000;
+    background: #FDE3DD;
+    border: 1px solid #FC623F;
+}

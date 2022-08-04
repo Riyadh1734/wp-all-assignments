@@ -1,11 +1,11 @@
 {
-    "name": "user/contact-form",
+    "name": "riyadh1734/contact-form",
     "description": "User submit there info via this form",
     "type": "wordpress-plugin",
     "license": "GPLv2",
     "autoload": {
         "psr-4": {
-            "User\\ContactForm\\": "src/"
+            "Riyadh1734\\ContactForm\\": "includes/"
         }
     },
     "authors": [

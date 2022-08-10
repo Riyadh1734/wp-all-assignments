@@ -21,3 +21,5 @@
 
 * books-review -> 10
 
+* featured-posts -> 11
+

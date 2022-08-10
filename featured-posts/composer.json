@@ -1,0 +1,20 @@
+{
+    "name": "riyadh1734/featured-posts",
+    "description": "Display featured posts using settings fields",
+    "type": "wordpress-plugin",
+    "license": "GPLv2",
+    "autoload": {
+        "psr-4": {
+            "Riyadh1734\\FeaturedPosts\\": "includes/"
+        },
+        "files": [ "includes/functions.php" ]
+    },
+    "authors": [
+        {
+            "name": "Riyadh Ahmed",
+            "email": "riathislam44@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}

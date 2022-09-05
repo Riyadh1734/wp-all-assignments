@@ -1,0 +1,19 @@
+{
+    "name": "riyadh1734/related-posts-widget",
+    "description": "Display 5 related posts in the single post page sidebar",
+    "type": "wordpress-plugin",
+    "license": "GPLv2",
+    "autoload": {
+        "psr-4": {
+            "Riyadh1734\\RelatedPostsWidget\\": "includes/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Riyadh Ahmed",
+            "email": "riathislam44@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}

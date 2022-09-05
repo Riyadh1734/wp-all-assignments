@@ -23,3 +23,7 @@
 
 * featured-posts -> 11
 
+* related-posts-widget -> 12
+
+* recent-posts-list -> 13
+

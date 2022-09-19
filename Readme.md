@@ -1,5 +1,6 @@
 # wp-all-assignments
 <strong>WordPress Plugin Development all assignments by weDevs</strong>
+<strong>Developed by saju4wordpress</strong>
 
 * posts-view -> 01
 
@@ -26,4 +27,6 @@
 * related-posts-widget -> 12
 
 * recent-posts-list -> 13
+
+* post-author-box -> 14
 

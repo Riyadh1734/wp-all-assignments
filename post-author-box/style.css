@@ -1,0 +1,38 @@
+.solids-bio-wrap {
+    margin: 40px 0 20px 0;
+    border: 1px solid #eee;
+    padding: 20px;
+    display: block;
+    overflow: hidden;
+}
+
+.solids-bio-wrap .avatar-image {
+    float: left;
+    margin-right: 15px;
+    margin-bottom: 15px;
+}
+
+.solids-bio-content .author-name {
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+
+ul.solids-socials {
+    clear: both;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+ul.solids-socials li {
+    display: inline-block;
+    border: 1px solid rgb(172, 110, 110);
+    padding: 3px 10px;
+    background: #ffff;
+}
+
+ul.solids-socials li a {
+    text-decoration: none;
+    color: blue;
+    font-weight: bold;
+}

@@ -1,0 +1,14 @@
+{
+    "name": "riyadh1734/post-author-box",
+    "description": "A plugin that shows the author bio every under the post",
+    "type": "wordpress-plugin",
+    "license": "GPLv2",
+    "authors": [
+        {
+            "name": "Riyadh Ahmed",
+            "email": "riathislam44@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}

@@ -1,5 +1,5 @@
 # wp-all-assignments
-<strong>WordPress Plugin Development all assignments by weDevs</strong>
+<strong>WordPress Plugin Development all assignments by weDevs</strong><br>
 <strong>Developed by saju4wordpress</strong>
 
 * posts-view -> 01
@@ -29,4 +29,6 @@
 * recent-posts-list -> 13
 
 * post-author-box -> 14
+
+* dev-academy-rest-api -> 15
 

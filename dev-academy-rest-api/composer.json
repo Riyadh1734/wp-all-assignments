@@ -1,0 +1,27 @@
+{
+    "name": "riyadh1734/dev-academy",
+    "description": "A tutorial plugin for Dev Academy",
+    "type": "wordpress-plugin",
+    "license": "GPLv2",
+    "autoload": {
+        "psr-4": {
+            "Riyadh1734\\DevAcademy\\": "src/"
+        },
+        "files": [ "src/functions.php"]
+    },
+    "authors": [
+        {
+            "name": "Riyadh Ahmed",
+            "email": "riathislam44@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require-dev": {
+        "automattic/vipwpcs": "dev-develop"
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    }
+}
